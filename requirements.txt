@@ -1,0 +1,5 @@
+Django==3.2.18
+PyMySQL==1.0.3
+djangorestframework==3.14.0
+inflection==0.5.1
+loguru==0.7.0
