@@ -1,10 +1,10 @@
 # django-restframework 项目脚手架
-###包含的功能
+### 包含的功能
 1、全局异常处理  
 2、封装全局json响应  
 3、全局日志记录  
 
-###项目流程
+### 项目流程
 1、创建
 ```shell
 django-admin startproject demo
