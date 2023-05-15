@@ -19,6 +19,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # 使用 python manage.py makemigrations 生成数据库迁移文件时，需要加上这行，否则可能生成不成功
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'drf_demo.settings')
     main()
