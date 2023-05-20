@@ -2,7 +2,7 @@
 ### 包含的功能
 1、全局异常处理  
 2、封装全局json响应  
-3、全局日志记录  
+3、日志中间件  
 
 ### 项目流程
 1、创建
@@ -23,3 +23,5 @@ python manage.py startapp <app_name>
 python manage.py makemigrations
 python manage.py migrate
 ```
+6、运行项目  
+使用 pycharm 
