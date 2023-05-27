@@ -23,5 +23,19 @@ python manage.py startapp <app_name>
 python manage.py makemigrations
 python manage.py migrate
 ```
-6、运行项目  
-使用 pycharm 
+6、git commit 提交规范  
+```shell
+<type>(<scope>): <subject>
+<type>：表示 commit 的类型，常见的有以下几种：
+
+feat：新增功能
+fix：修复 bug
+docs：文档更新
+style：代码格式化、样式调整等非功能性更新
+refactor：重构代码
+test：添加或修改测试代码
+chore：构建过程或辅助工具的变动
+
+示例：
+feat(login): add remember me feature
+```
