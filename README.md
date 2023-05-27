@@ -37,5 +37,5 @@ test：添加或修改测试代码
 chore：构建过程或辅助工具的变动
 
 示例：
-feat(login): add remember me feature
+feat(登录): 添加登录时需要验证码
 ```
