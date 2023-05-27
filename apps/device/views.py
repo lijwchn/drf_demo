@@ -19,13 +19,15 @@ class DeviceGenericAPIView(GenericAPIView):
         item_queryset = self.get_queryset().filter(is_delete=0, code__contains=code,
                                                    name__contains=name)
         # logger.info(item_queryset.query)
-        item_page = self.paginate_queryset(item_queryset)
-        item_serializer = self.get_serializer(item_page, many=True)
-        total_count = self.paginator.page.paginator.count
-        total_page = self.paginator.page.paginator.num_pages
+        # item_page = self.paginate_queryset(item_queryset)
+        # item_serializer = self.get_serializer(item_page, many=True)
+        item_serializer = self.get_serializer(item_queryset, many=True)
+        # total_count = self.paginator.page.paginator.count
+        # total_page = self.paginator.page.paginator.num_pages
         if len(item_serializer.data) == 0:
             return APIResponse(data="无数据")
-        return APIResponse(data=item_serializer.data, totalCount=total_count, totalPage=total_page)
+        # return APIResponse(data=item_serializer.data, totalCount=total_count, totalPage=total_page)
+        return APIResponse(data=item_serializer.data)
 
     def post(self, request, *args, **kwargs):
         if isinstance(request.data, dict):
