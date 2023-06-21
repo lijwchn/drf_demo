@@ -1,5 +1,5 @@
 from .models import Device
-from apps.basic.my_model_serializer import MyModelSerializer
+from apps.basic.my_serializer import MyModelSerializer
 
 
 class DeviceSerializer(MyModelSerializer):
