@@ -20,8 +20,18 @@ class UserInfoGenericAPIView(GenericAPIView):
             serializer = self.get_serializer(data=request.data)
             # 校验数据, raise_exception 数据不合格之后抛异常
             serializer.is_valid(raise_exception=True)
-            # 保存数据
             serializer.save()
             return APIResponse(data="success")
         else:
             raise BaseCustomException("数据格式错误")
+
+    def put(self, request, *args, **kwargs):
+        pk = request.data.get("id")
+        if self.queryset.filter(id=pk).exists():
+            user = self.get_queryset().filter(pk=pk).first()
+            serializer = self.get_serializer(instance=user, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return APIResponse(data="success")
+        else:
+            raise BaseCustomException("id不存在")
