@@ -16,9 +16,31 @@ class MyModelSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         # 将下划线转化成驼峰格式（接口传出去的数据）
         ret = super().to_representation(instance)
-        return {inflection.camelize(key, False): value for key, value in ret.items()}
+        return {
+            inflection.camelize(
+                key,
+                False): value for key,
+            value in ret.items()}
 
     def to_internal_value(self, data):
         # 将驼峰格式转化成下划线格式（接口传递过来的数据）
-        data = {inflection.underscore(key): value for key, value in data.items()}
+        data = {
+            inflection.underscore(key): value for key,
+            value in data.items()}
+        return super().to_internal_value(data)
+
+
+class MySerializer(serializers.Serializer):
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        return {
+            inflection.camelize(
+                key,
+                False): value for key,
+            value in ret.items()}
+
+    def to_internal_value(self, data):
+        data = {
+            inflection.underscore(key): value for key,
+            value in data.items()}
         return super().to_internal_value(data)
