@@ -6,7 +6,7 @@ from rest_framework import serializers
 class UserInfoSerializer(MySerializer):
     user_name = serializers.CharField()
     user_password = serializers.CharField()
-    user_phone = serializers.CharField()
+    user_phone = serializers.CharField(required=False, allow_blank=True)
 
     def create(self, validated_data):
         return UserInfo.objects.create(**validated_data)

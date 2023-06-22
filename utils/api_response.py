@@ -20,6 +20,4 @@ class APIResponse(Response):
             response_data.update(data=data)
         if kwargs:  # 如果不为空，其他参数添加到字典
             response_data.update(kwargs)
-        # 在接口响应的数据中，字段名称从下划线形式——>转化为小驼峰形式
-        # response_data = convert_to_camel_case(response_data)
         super().__init__(data=response_data, status=status)

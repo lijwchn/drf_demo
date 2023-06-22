@@ -17,18 +17,18 @@ class UserInfoGenericAPIView(GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         if isinstance(request.data, dict):
-            # 调用模型序列化器
-            serializer = self.get_serializer(data=request.data)
+            # 调用模型序列化器，反序列化
+            user_serializer = self.get_serializer(data=request.data)
             # 校验数据, raise_exception 数据不合格之后抛异常
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
+            user_serializer.is_valid(raise_exception=True)
+            user_serializer.save()
             return APIResponse(data="success")
         else:
             raise BaseCustomException("数据格式错误")
 
     def put(self, request, *args, **kwargs):
         pk = request.data.get("id")
-        if self.queryset.filter(id=pk).exists():
+        if pk is not None and self.queryset.filter(id=pk).exists():
             user = self.get_queryset().filter(pk=pk).first()
             serializer = self.get_serializer(instance=user, data=request.data)
             serializer.is_valid(raise_exception=True)
