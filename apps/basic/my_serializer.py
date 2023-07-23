@@ -1,7 +1,10 @@
 import inflection
 from rest_framework import serializers
 
-
+"""
+通过使用 djangorestframework-camel-case 扩展
+可以替代下面的代码，不用手动转化格式
+"""
 class MyModelSerializer(serializers.ModelSerializer):
     """
     在使用 Django Rest Framework 时，我们可以使用序列化器在 JSON 和 Django 模型实例之间转换数据。
