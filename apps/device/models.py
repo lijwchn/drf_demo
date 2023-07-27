@@ -8,6 +8,7 @@ class Device(BaseTable, SoftDeleteTable):
     name = models.CharField(max_length=100, verbose_name="设备名称")
     device_type = models.CharField(max_length=100, verbose_name="设备类型")
     purchase_time = models.DateField(verbose_name="购买时间")
+    price = models.IntegerField(verbose_name="价格", default=67)
 
     class Meta:
         db_table = "device"
