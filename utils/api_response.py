@@ -3,7 +3,7 @@ from rest_framework import status
 
 
 class APIResponse(Response):
-    def __init__(self, code=200, message="success", success=True, data=None, status=status.HTTP_200_OK, **kwargs):
+    def __init__(self, code=200, message="操作成功", success=True, data=None, status=status.HTTP_200_OK, **kwargs):
         """
         :param code: 错误码
         :param message: 返回信息
