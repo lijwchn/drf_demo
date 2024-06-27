@@ -7,24 +7,34 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='UserInfo',
+            name="UserInfo",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_delete', models.IntegerField(default=0)),
-                ('create_time', models.DateTimeField(auto_now_add=True)),
-                ('update_time', models.DateTimeField(auto_now=True)),
-                ('user_name', models.CharField(max_length=100, verbose_name='用户名')),
-                ('user_password', models.CharField(max_length=100, verbose_name='用户密码')),
-                ('user_phone', models.CharField(max_length=20, verbose_name='电话')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_delete", models.IntegerField(default=0)),
+                ("create_time", models.DateTimeField(auto_now_add=True)),
+                ("update_time", models.DateTimeField(auto_now=True)),
+                ("user_name", models.CharField(max_length=100, verbose_name="用户名")),
+                (
+                    "user_password",
+                    models.CharField(max_length=100, verbose_name="用户密码"),
+                ),
+                ("user_phone", models.CharField(max_length=20, verbose_name="电话")),
             ],
             options={
-                'verbose_name': '用户表',
-                'db_table': 'user_info',
+                "verbose_name": "用户表",
+                "db_table": "user_info",
             },
         ),
     ]

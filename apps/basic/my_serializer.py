@@ -5,6 +5,8 @@ from rest_framework import serializers
 通过使用 djangorestframework-camel-case 扩展
 可以替代下面的代码，不用手动转化格式
 """
+
+
 class MyModelSerializer(serializers.ModelSerializer):
     """
     在使用 Django Rest Framework 时，我们可以使用序列化器在 JSON 和 Django 模型实例之间转换数据。
@@ -19,31 +21,19 @@ class MyModelSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         # 将下划线转化成驼峰格式（接口传出去的数据）
         ret = super().to_representation(instance)
-        return {
-            inflection.camelize(
-                key,
-                False): value for key,
-            value in ret.items()}
+        return {inflection.camelize(key, False): value for key, value in ret.items()}
 
     def to_internal_value(self, data):
         # 将驼峰格式转化成下划线格式（接口传递过来的数据）
-        data = {
-            inflection.underscore(key): value for key,
-            value in data.items()}
+        data = {inflection.underscore(key): value for key, value in data.items()}
         return super().to_internal_value(data)
 
 
 class MySerializer(serializers.Serializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        return {
-            inflection.camelize(
-                key,
-                False): value for key,
-            value in ret.items()}
+        return {inflection.camelize(key, False): value for key, value in ret.items()}
 
     def to_internal_value(self, data):
-        data = {
-            inflection.underscore(key): value for key,
-            value in data.items()}
+        data = {inflection.underscore(key): value for key, value in data.items()}
         return super().to_internal_value(data)

@@ -39,9 +39,11 @@ class UserInfoGenericAPIView(GenericAPIView):
 
     def delete(self, request, *args, **kwargs):
         del_list = request.data.get("ids")
-        num = self.get_queryset().filter(
-            pk__in=del_list, is_delete=0).update(
-            is_delete=1, update_time=timezone.now())
+        num = (
+            self.get_queryset()
+            .filter(pk__in=del_list, is_delete=0)
+            .update(is_delete=1, update_time=timezone.now())
+        )
         if num:
             return APIResponse(message="删除了{}条数据".format(num))
         raise BaseCustomException("没有删除数据,删除的数据可能不存在,或者已经被删除")

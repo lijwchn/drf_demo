@@ -10,6 +10,7 @@ class GetUpdateDeviceById(BaseCURDView):
     get 根据对象id查询单个
     put 根据对象id更新
     """
+
     model = Device
     serializer_class = DeviceSerializer
     pagination_class = Pager
@@ -36,14 +37,12 @@ class GetCreateDeleteDevice(GetUpdateDeviceById):
     def get(self, request, *args, **kwargs):
         # 分页查询列表
         res = self.get_obj_list_by_conditions_page(
-            request, exact=False, *args, **kwargs)
+            request, exact=False, *args, **kwargs
+        )
         if self.pagination_class is not None:
             total_count = self.paginator.page.paginator.count
             total_page = self.paginator.page.paginator.num_pages
-            return APIResponse(
-                data=res,
-                total_count=total_count,
-                total_page=total_page)
+            return APIResponse(data=res, total_count=total_count, total_page=total_page)
         return APIResponse(data=res)
 
     def post(self, request, *args, **kwargs):

@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('device', '0001_initial'),
+        ("device", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='device',
-            name='creator',
-            field=models.CharField(max_length=20, null=True, verbose_name='创建人'),
+            model_name="device",
+            name="creator",
+            field=models.CharField(max_length=20, null=True, verbose_name="创建人"),
         ),
         migrations.AddField(
-            model_name='device',
-            name='updater',
-            field=models.CharField(max_length=20, null=True, verbose_name='更新人'),
+            model_name="device",
+            name="updater",
+            field=models.CharField(max_length=20, null=True, verbose_name="更新人"),
         ),
         migrations.AlterField(
-            model_name='device',
-            name='is_delete',
-            field=models.IntegerField(default=0, verbose_name='删除标识'),
+            model_name="device",
+            name="is_delete",
+            field=models.IntegerField(default=0, verbose_name="删除标识"),
         ),
     ]

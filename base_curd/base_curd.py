@@ -31,8 +31,7 @@ class BaseCURDView(RetrieveAPIView):
         ser = self.serializer_class(instance)
         return ser.data
 
-    def get_obj_list_by_conditions_page(
-            self, request, exact: bool, *args, **kwargs):
+    def get_obj_list_by_conditions_page(self, request, exact: bool, *args, **kwargs):
         """
         使用条件查询对象列表
         :param exact: 是否开启精确查询 True False
@@ -47,7 +46,11 @@ class BaseCURDView(RetrieveAPIView):
             obj = self.get_queryset().filter(**filter_conditions)
         else:
             obj = self.get_queryset().filter(
-                **{f'{key}__contains': value for key, value in filter_conditions.items()})
+                **{
+                    f"{key}__contains": value
+                    for key, value in filter_conditions.items()
+                }
+            )
         if self.pagination_class is not None:
             logger.info("需要分页查询")
             obj = self.paginate_queryset(obj.order_by("id"))
@@ -60,8 +63,7 @@ class BaseCURDView(RetrieveAPIView):
     def create_obj(self, request, payload: Any, creator: str = "sys"):
         # 创建对象
         try:
-            logger.info(
-                f"input: create={self.model.__name__}, payload={payload}")
+            logger.info(f"input: create={self.model.__name__}, payload={payload}")
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
             obj = self.model.objects.create(creator=creator, **payload)
@@ -106,8 +108,7 @@ class BaseCURDView(RetrieveAPIView):
         try:
             instance = self.get_object()  # 获取要更新的对象
             data = request.data  # 获取请求的数据
-            serializer = self.serializer_class(
-                instance, data=data, partial=True)
+            serializer = self.serializer_class(instance, data=data, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return True

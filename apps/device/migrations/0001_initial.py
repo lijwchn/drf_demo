@@ -7,25 +7,35 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Device',
+            name="Device",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_delete', models.IntegerField(default=0)),
-                ('create_time', models.DateTimeField(auto_now_add=True)),
-                ('update_time', models.DateTimeField(auto_now=True)),
-                ('code', models.CharField(max_length=100, verbose_name='设备编码')),
-                ('name', models.CharField(max_length=100, verbose_name='设备名称')),
-                ('device_type', models.CharField(max_length=100, verbose_name='设备类型')),
-                ('purchase_time', models.DateField(verbose_name='购买时间')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_delete", models.IntegerField(default=0)),
+                ("create_time", models.DateTimeField(auto_now_add=True)),
+                ("update_time", models.DateTimeField(auto_now=True)),
+                ("code", models.CharField(max_length=100, verbose_name="设备编码")),
+                ("name", models.CharField(max_length=100, verbose_name="设备名称")),
+                (
+                    "device_type",
+                    models.CharField(max_length=100, verbose_name="设备类型"),
+                ),
+                ("purchase_time", models.DateField(verbose_name="购买时间")),
             ],
             options={
-                'verbose_name': '设备表',
-                'db_table': 'device',
+                "verbose_name": "设备表",
+                "db_table": "device",
             },
         ),
     ]

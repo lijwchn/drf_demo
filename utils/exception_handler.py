@@ -16,5 +16,9 @@ def comm_exception_handler(exc=None, context=None):
             first_key, first_value = next(iter(exc.detail.items()))
             detail = f"{first_key}{first_value[0]}"
         # status_code = response.status_code
-        return APIResponse(code=500, message=detail, status=status.HTTP_200_OK, success=False)
-    return APIResponse(code=500, message="系统异常", status=status.HTTP_200_OK, success=False)
+        return APIResponse(
+            code=500, message=detail, status=status.HTTP_200_OK, success=False
+        )
+    return APIResponse(
+        code=500, message="系统异常", status=status.HTTP_200_OK, success=False
+    )

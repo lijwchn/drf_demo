@@ -11,7 +11,7 @@ def send_request(url, method=None, timeout=None, **kwargs):
     _method = method
     try:
         response = request(method=_method, url=url, **kwargs)
-        encoding = cchardet.detect(response.content)['encoding']
+        encoding = cchardet.detect(response.content)["encoding"]
         logger.info("请求地址{}".format(url))
         logger.info("接口入参{}".format(response.request.body))
         if response.status_code == 200:
